@@ -1,7 +1,5 @@
 import express from 'express';
 
-const router = express.Router();
+const routes = express.Router();
 
-// router.post();
-
-export const UserRoutes = router;
+export const UserRoutes = routes;
