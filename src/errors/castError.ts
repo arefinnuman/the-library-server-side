@@ -1,7 +1,7 @@
 // cast error
 import mongoose from 'mongoose';
-import { IGenericErrorMessage } from '../interface/genericErrorMessage';
-import { IGenericErrorResponse } from '../interface/genericErrorResponse';
+import { IGenericErrorMessage } from '../interfaces/genericErrorMessage';
+import { IGenericErrorResponse } from '../interfaces/genericErrorResponse';
 
 const CastError = (error: mongoose.Error.CastError): IGenericErrorResponse => {
   const errors: IGenericErrorMessage[] = [

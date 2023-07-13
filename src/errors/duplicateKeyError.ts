@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import mongoose from 'mongoose';
-import { IGenericErrorResponse } from '../interface/genericErrorResponse';
+import { IGenericErrorResponse } from '../interfaces/genericErrorResponse';
 
 const DuplicateKeyError = (error: mongoose.Error): IGenericErrorResponse => {
   const duplicateField = Object.keys((error as any).keyValue)[0];
