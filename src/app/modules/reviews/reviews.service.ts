@@ -8,6 +8,12 @@ const createReviews = async (payload: IReviews): Promise<IReviews | null> => {
   return result;
 };
 
+const getReviews = async (bookId: string): Promise<IReviews[]> => {
+  const result = await Reviews.find({ book: bookId });
+  return result;
+};
+
 export const ReviewsService = {
   createReviews,
+  getReviews,
 };

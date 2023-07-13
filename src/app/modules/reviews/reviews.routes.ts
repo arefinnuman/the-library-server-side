@@ -5,9 +5,7 @@ const routes = express.Router();
 
 routes.post('/create-review', ReviewsController.createReviews);
 
-// routes.get('/:id', BookController.getSingleBook);
-
-// routes.get('/', BookController.getBook);
+routes.get('/:id', ReviewsController.getReviews);
 
 // routes.patch('/:id', Authorization(), BookController.updateBook);
 

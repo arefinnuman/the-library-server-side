@@ -11,11 +11,24 @@ const createReviews = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Product Created Successfully',
+    message: 'Reviews Created Successfully',
+    data: result,
+  });
+});
+
+const getReviews = catchAsync(async (req: Request, res: Response) => {
+  const bookId = req.params.id;
+  const result = await ReviewsService.getReviews(bookId);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Reviews Fetched Successfully',
     data: result,
   });
 });
 
 export const ReviewsController = {
   createReviews,
+  getReviews,
 };
