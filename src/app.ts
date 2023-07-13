@@ -1,3 +1,4 @@
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
 import globalErrorHandler from './app/middleWares/globalErrorHandler';
@@ -7,6 +8,7 @@ import router from './app/routes/routes';
 const app = express();
 
 app.use(cors());
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

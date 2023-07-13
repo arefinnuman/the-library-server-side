@@ -1,7 +1,6 @@
 import express from 'express';
 import validateRequest from '../../middleWares/validateRequest';
 import { UserController } from '../user/user.controller';
-
 import { AuthController } from './auth.controller';
 import { AuthValidation } from './auth.validation';
 
