@@ -5,19 +5,31 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --exit-child --watch src src/server.ts",
+    "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "lint:fix": "eslint . --fix",
+    "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "prettier:fix": "prettier --write .",
+    "lint-prettier": "yarn lint:check && yarn prettier:check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "lint-staged": {
+    "src/**/*.ts": "yarn lint-prettier"
+  },
+  "author": "Arefin Numan",
   "license": "ISC",
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "eslint": "^8.44.0",
     "express": "^4.18.2",
+    "http-status": "^1.6.2",
     "lint-staged": "^13.2.3",
-    "mongoose": "^7.3.4"
+    "mongoose": "^7.3.4",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
