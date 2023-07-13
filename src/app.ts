@@ -1,11 +1,11 @@
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import express from 'express';
+import express, { Application } from 'express';
 import globalErrorHandler from './app/middleWares/globalErrorHandler';
 import { notFoundHandler } from './app/middleWares/notFoundHandler';
 import router from './app/routes/routes';
 
-const app = express();
+const app: Application = express();
 
 app.use(cors());
 app.use(cookieParser());
