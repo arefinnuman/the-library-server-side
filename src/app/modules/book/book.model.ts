@@ -21,6 +21,10 @@ const BookSchema = new Schema<IBook>(
       type: String,
       required: true,
     },
+    image: {
+      type: String,
+      required: true,
+    },
     createdUser: {
       type: Schema.Types.ObjectId,
       ref: 'User',
