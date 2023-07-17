@@ -74,6 +74,15 @@ const getBook = async (
   };
 };
 
+// get last 10 books added to db
+const getLastTenBooks = async (): Promise<IBook[]> => {
+  const result = await Book.find()
+    .populate('createdUser')
+    .sort({ createdAt: -1 })
+    .limit(10);
+  return result;
+};
+
 const getSingleBook = async (id: string): Promise<IBook | null> => {
   const result = await Book.findById(id).populate('createdUser');
   if (!result) {
@@ -134,4 +143,5 @@ export const BookService = {
   updateBook,
   deleteBook,
   getBook,
+  getLastTenBooks,
 };

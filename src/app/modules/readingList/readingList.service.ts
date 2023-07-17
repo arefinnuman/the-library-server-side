@@ -11,13 +11,16 @@ const createReadingList = async (
 };
 
 const getReadingList = async (userId: string): Promise<IReadingList[]> => {
-  const result = await ReadingList.find({ user: userId }).populate('book');
+  const result = await ReadingList.find({
+    user: userId,
+    status: false,
+  }).populate('book');
   return result;
 };
 
 const markAsRead = async (id: string): Promise<IReadingList | null> => {
   const result = await ReadingList.findOneAndUpdate(
-    { _id: id },
+    { book: id },
     { status: true },
     { new: true },
   );
@@ -25,7 +28,10 @@ const markAsRead = async (id: string): Promise<IReadingList | null> => {
 };
 
 const getMarkedAsRead = async (userId: string): Promise<IReadingList[]> => {
-  const result = await ReadingList.find({ user: userId, status: true });
+  const result = await ReadingList.find({
+    user: userId,
+    status: true,
+  }).populate('book');
   return result;
 };
 

@@ -75,10 +75,22 @@ const deleteBook = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getLastTenBooks = catchAsync(async (req: Request, res: Response) => {
+  const result = await BookService.getLastTenBooks();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: `Last 10 Books fetched successfully`,
+    data: result,
+  });
+});
+
 export const BookController = {
   createBook,
   getSingleBook,
   updateBook,
   deleteBook,
   getBook,
+  getLastTenBooks,
 };
