@@ -3,7 +3,7 @@ import { WishListController } from './wishList.controller';
 
 const routes = express.Router();
 
-routes.post('/create-readingList', WishListController.createWishList);
+routes.post('/create-wishList', WishListController.createWishList);
 
 routes.get('/:id', WishListController.getWishList);
 

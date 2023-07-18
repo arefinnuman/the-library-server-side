@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Reviews = void 0;
+exports.WishList = void 0;
 const mongoose_1 = require("mongoose");
-const ReviewsSchema = new mongoose_1.Schema({
-    review: {
-        type: String,
-        required: true,
+const WishListSchema = new mongoose_1.Schema({
+    status: {
+        type: Boolean,
+        default: false,
     },
     user: {
         type: mongoose_1.Schema.Types.ObjectId,
@@ -23,4 +23,4 @@ const ReviewsSchema = new mongoose_1.Schema({
         virtuals: true,
     },
 });
-exports.Reviews = (0, mongoose_1.model)('Reviews', ReviewsSchema);
+exports.WishList = (0, mongoose_1.model)('WishList', WishListSchema);

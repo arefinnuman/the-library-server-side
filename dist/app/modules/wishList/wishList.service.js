@@ -9,14 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const catchAsync = (fn) => {
-    return (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            yield fn(req, res, next);
-        }
-        catch (error) {
-            next(error);
-        }
-    });
+exports.WishListService = void 0;
+const wishList_model_1 = require("./wishList.model");
+const createWishList = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = (yield (yield wishList_model_1.WishList.create(payload)).populate('user')).populate('book');
+    return result;
+});
+const getWishList = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield wishList_model_1.WishList.find({
+        user: userId,
+        status: false,
+    }).populate('book');
+    return result;
+});
+exports.WishListService = {
+    createWishList,
+    getWishList,
 };
-exports.default = catchAsync;

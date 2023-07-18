@@ -23,21 +23,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserController = void 0;
+exports.WishListController = void 0;
 const http_status_1 = __importDefault(require("http-status"));
 const catchAsync_1 = __importDefault(require("../../../functions/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../../functions/sendResponse"));
-const user_service_1 = require("./user.service");
-const createUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const userData = __rest(req.body, []);
-    const result = yield user_service_1.UserService.createUser(userData);
+const wishList_service_1 = require("./wishList.service");
+const createWishList = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const productData = __rest(req.body, []);
+    const result = yield wishList_service_1.WishListService.createWishList(productData);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: `User Created Successfully`,
+        message: 'WishList Created Successfully',
         data: result,
     });
 }));
-exports.UserController = {
-    createUser,
+const getWishList = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.params.id;
+    const result = yield wishList_service_1.WishListService.getWishList(userId);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'WishList Fetched Successfully',
+        data: result,
+    });
+}));
+exports.WishListController = {
+    createWishList,
+    getWishList,
 };
